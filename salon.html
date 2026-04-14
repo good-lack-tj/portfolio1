@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIÈRE｜大阪・心斎橋のプライベートエステサロン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0C0C0C;
+    --dark: #141414;
+    --dark-mid: #1C1C1C;
+    --card: #222222;
+    --border: #2E2E2E;
+    --border-light: #3A3A3A;
+    --gold: #C4A04A;
+    --gold-light: #DEC07A;
+    --gold-dim: rgba(196, 160, 74, 0.12);
+    --rose: #C4847A;
+    --rose-dim: rgba(196, 132, 122, 0.12);
+    --white: #F8F4EF;
+    --white-mid: rgba(248, 244, 239, 0.6);
+    --white-dim: rgba(248, 244, 239, 0.12);
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(12,12,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--white);
+  }
+
+  .logo-sub {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    display: block;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  nav { display: flex; gap: 36px; align-items: center; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--white-mid);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 10px 24px;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.2em !important;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--black) !important;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 80px 60px;
+  }
+
+  .hero-left-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 60%, rgba(196,160,74,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 20%, rgba(196,132,122,0.06) 0%, transparent 50%);
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(196,160,74,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,160,74,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12rem;
+    opacity: 0.08;
+    filter: grayscale(1);
+  }
+
+  .hero-left-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-year::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .hero-left-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+  }
+
+  .hero-left-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-left-sub {
+    font-size: 0.78rem;
+    line-height: 2.2;
+    color: var(--white-mid);
+    font-weight: 300;
+    max-width: 320px;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 70px 80px 60px;
+    position: relative;
+  }
+
+  .hero-right::before {
+    content: 'L';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30rem;
+    color: rgba(196,160,74,0.03);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+    opacity: 0;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--white);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+    opacity: 0;
+  }
+
+  .hero-title span {
+    display: block;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 0.8rem;
+    line-height: 2.3;
+    color: var(--white-mid);
+    font-weight: 300;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+    opacity: 0;
+  }
+
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeUp 0.8s ease 0.65s forwards;
+    opacity: 0;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--black);
+    padding: 18px 40px;
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(196,160,74,0.25);
+  }
+
+  .btn-border {
+    border: 1px solid var(--border-light);
+    color: var(--white-mid);
+    padding: 16px 40px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    transition: all 0.3s;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .btn-border:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.8s ease 0.8s forwards;
+    opacity: 0;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--white-mid);
+    text-transform: uppercase;
+  }
+
+  /* ===== CONCEPT ===== */
+  .concept {
+    padding: 120px 80px;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .concept-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .concept-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .concept-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--white);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+  }
+
+  .concept-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .concept-text {
+    font-size: 0.82rem;
+    line-height: 2.5;
+    color: var(--white-mid);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .concept-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .concept-tag {
+    border: 1px solid var(--border-light);
+    color: var(--white-mid);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    padding: 8px 18px;
+    text-transform: uppercase;
+  }
+
+  .concept-visual {
+    position: relative;
+  }
+
+  .concept-img {
+    background: linear-gradient(135deg, var(--dark-mid), var(--card));
+    border: 1px solid var(--border);
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .concept-img::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
+  }
+
+  .concept-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
+  }
+
+  .concept-emoji {
+    font-size: 8rem;
+    opacity: 0.3;
+    filter: grayscale(0.5);
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .concept-badge {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(196,160,74,0.3);
+    padding: 16px 20px;
+    text-align: right;
+  }
+
+  .concept-badge p {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .concept-badge strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    padding: 120px 80px;
+    background: var(--black);
+  }
+
+  .features-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .feature-card {
+    background: var(--dark);
+    padding: 48px 32px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .feature-card:hover { background: var(--dark-mid); }
+  .feature-card:hover::after { opacity: 1; }
+
+  .feature-icon {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .feature-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: rgba(196,160,74,0.12);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .feature-card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.88rem;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .feature-card p {
+    font-size: 0.75rem;
+    line-height: 2.1;
+    color: var(--white-mid);
+    font-weight: 300;
+  }
+
+  /* ===== MENU ===== */
+  .menu {
+    padding: 120px 80px;
+    background: var(--dark);
+  }
+
+  .menu-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .menu-card {
+    border: 1px solid var(--border);
+    padding: 44px 36px;
+    position: relative;
+    transition: all 0.4s;
+    background: var(--dark-mid);
+    overflow: hidden;
+  }
+
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .menu-card.featured {
+    border-color: rgba(196,160,74,0.3);
+    background: var(--gold-dim);
+  }
+
+  .menu-card.featured::before { opacity: 1; }
+
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+
+  .menu-card:hover::before { opacity: 1; }
+
+  .featured-label {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    border: 1px solid rgba(196,160,74,0.4);
+    padding: 3px 10px;
+    text-transform: uppercase;
+  }
+
+  .menu-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .menu-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  .menu-name-jp {
+    font-size: 0.72rem;
+    color: var(--white-mid);
+    margin-bottom: 20px;
+    letter-spacing: 0.15em;
+  }
+
+  .menu-desc {
+    font-size: 0.76rem;
+    line-height: 2.1;
+    color: var(--white-mid);
+    font-weight: 300;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .menu-price span {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.7rem;
+    color: var(--white-mid);
+    font-weight: 300;
+  }
+
+  /* ===== VOICE ===== */
+  .voice {
+    padding: 120px 80px;
+    background: var(--black);
+  }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .voice-card {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    padding: 40px 32px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .voice-card:hover {
+    border-color: rgba(196,160,74,0.3);
+    transform: translateY(-3px);
+  }
+
+  .voice-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: rgba(196,160,74,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .voice-text {
+    font-size: 0.8rem;
+    line-height: 2.3;
+    color: var(--white-mid);
+    font-weight: 300;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .voice-author strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  .voice-author span {
+    font-size: 0.68rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    padding: 120px 80px;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(196,160,74,0.06) 0%, transparent 70%);
+  }
+
+  .cta-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    margin: 0 auto 40px;
+  }
+
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-section p {
+    font-size: 0.8rem;
+    color: var(--white-mid);
+    line-height: 2.3;
+    margin-bottom: 56px;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  footer p {
+    font-size: 0.68rem;
+    color: rgba(248,244,239,0.3);
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    header { padding: 18px 24px; }
+    nav a:not(.nav-cta) { display: none; }
+
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { height: 300px; }
+    .hero-right { padding: 60px 32px 80px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+
+    .concept { grid-template-columns: 1fr; padding: 80px 32px; gap: 48px; }
+    .concept-img { height: 300px; }
+
+    .features, .menu, .voice, .cta-section { padding: 80px 32px; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .menu-grid, .voice-grid { grid-template-columns: 1fr; }
+    .menu-header { grid-template-columns: 1fr; gap: 20px; }
+
+    .cta-btns { flex-direction: column; align-items: center; }
+
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <div class="logo">LUMIÈRE</div>
+    <span class="logo-sub">PRIVATE ESTHETIC SALON</span>
+  </div>
+  <nav>
+    <a href="#concept">Concept</a>
+    <a href="#features">Features</a>
+    <a href="#menu">Menu</a>
+    <a href="#voice">Voice</a>
+    <a href="#cta" class="nav-cta">予約する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-left-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-img-placeholder">✨</div>
+    <div class="hero-left-content">
+      <div class="hero-year">OSAKA SHINSAIBASHI — EST. 2018</div>
+      <h2 class="hero-left-title">
+        肌は、<br>
+        <em>正直だ。</em>
+      </h2>
+      <p class="hero-left-sub">あなたの肌が語る物語を、丁寧に読み解きます。</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-tag">Complete Private Esthetic — Shinsaibashi, Osaka</div>
+    <h1 class="hero-title">
+      大人の女性が<br>
+      <span>本当に求める</span><br>
+      肌へ。
+    </h1>
+    <p class="hero-sub">
+      一人ひとりの肌と向き合う、完全プライベートサロン。<br>
+      フェイシャル専門だからこそできる、<br>
+      深い施術と丁寧なカウンセリングで<br>
+      あなたの肌本来の美しさを引き出します。
+    </p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-gold">ご予約・お問い合わせ</a>
+      <a href="#menu" class="btn-border">メニューを見る</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500<small style="font-size:1rem">+</small></div>
+        <div class="stat-label">Clients</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Years</div>
+      </div>
+      <div>
+        <div class="stat-num">99<small style="font-size:1rem">%</small></div>
+        <div class="stat-label">Repeat Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="reveal">
+    <div class="concept-label">Concept</div>
+    <h2 class="concept-title">
+      急がない。<br>
+      焦らない。<br>
+      <em>ただ、あなたの肌と向き合う。</em>
+    </h2>
+    <p class="concept-text">
+      LUMIÈREは「光」を意味するフランス語。<br>
+      あなたの肌が本来持っている光を取り戻すために、<br>
+      一切の妥協なく向き合うサロンでありたいと思っています。<br><br>
+      完全予約制・完全個室・マンツーマン施術。<br>
+      他の誰かの視線も音も気にすることなく、<br>
+      ただあなただけの時間をお過ごしください。
+    </p>
+    <div class="concept-tags">
+      <span class="concept-tag">Complete Private</span>
+      <span class="concept-tag">One-on-One</span>
+      <span class="concept-tag">Facial Specialist</span>
+    </div>
+  </div>
+  <div class="concept-visual reveal">
+    <div class="concept-img">
+      <div class="concept-emoji">🌸</div>
+      <div class="concept-badge">
+        <p>REPEAT RATE</p>
+        <strong>99%</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-header reveal">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">LUMIÈREが<br><em>選ばれる理由</em></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-num">01</div>
+      <span class="feature-icon">🔒</span>
+      <h3>完全個室・プライベート空間</h3>
+      <p>他のお客様と顔を合わせることのない完全個室。気兼ねなくリラックスできる空間で、心も体も解放されます。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">02</div>
+      <span class="feature-icon">💆</span>
+      <h3>マンツーマン施術</h3>
+      <p>担当者がかわることはありません。毎回同じセラピストが施術するので、あなたの肌の変化を継続して把握できます。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">03</div>
+      <span class="feature-icon">🔬</span>
+      <h3>肌診断・カスタマイズ施術</h3>
+      <p>毎回の施術前に肌診断を実施。その日のコンディションに合わせてメニューをカスタマイズし、最適なケアを提供します。</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-num">04</div>
+      <span class="feature-icon">🌿</span>
+      <h3>厳選オーガニック製品使用</h3>
+      <p>肌への負担を最小限に抑えた、厳選されたオーガニックコスメを使用。敏感肌・アレルギー肌の方もご安心ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-header">
+    <div class="reveal">
+      <div class="section-label">Menu</div>
+      <h2 class="section-title">施術メニュー</h2>
+    </div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal">
+      <div class="menu-time">60 min</div>
+      <div class="menu-name">Lumière Basic</div>
+      <div class="menu-name-jp">ルミエール ベーシック</div>
+      <p class="menu-desc">クレンジング・角質ケア・保湿を丁寧に行う基本コース。はじめてご来店の方・定期メンテナンスにおすすめです。</p>
+      <div class="menu-price">¥12,000<span>（税込）</span></div>
+    </div>
+    <div class="menu-card featured reveal">
+      <div class="featured-label">Popular</div>
+      <div class="menu-time">90 min</div>
+      <div class="menu-name">Lumière Premium</div>
+      <div class="menu-name-jp">ルミエール プレミアム</div>
+      <p class="menu-desc">肌診断をもとにカスタマイズした集中ケアコース。毛穴・シミ・ハリ・乾燥など気になるお悩みに特化して施術します。</p>
+      <div class="menu-price">¥18,000<span>（税込）</span></div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-time">120 min</div>
+      <div class="menu-name">Lumière Special</div>
+      <div class="menu-name-jp">ルミエール スペシャル</div>
+      <p class="menu-desc">最上位の特別コース。フェイシャル施術に加え、頭皮・デコルテケアも含む全身トータルビューティーコースです。</p>
+      <div class="menu-price">¥28,000<span>（税込）</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice" id="voice">
+  <div class="features-header reveal">
+    <div class="section-label">Voice</div>
+    <h2 class="section-title">お客様の<em>声</em></h2>
+  </div>
+  <div class="voice-grid">
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <p class="voice-text">毎月通っています。肌の調子がこんなに変わるとは思っていませんでした。担当の方が毎回変わらないので、肌の状態をよく把握してもらえているのが安心です。</p>
+      <div class="voice-author">
+        <strong>Y.M. 様 / 40代</strong>
+        <span>Premium コース 定期利用</span>
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <p class="voice-text">完全個室で他の方と会わないのがすごく良かったです。ノーメイクで来ても恥ずかしくないし、リラックスして過ごせました。施術後の肌のもちもち感が忘れられません。</p>
+      <div class="voice-author">
+        <strong>K.S. 様 / 30代</strong>
+        <span>Basic コース 初回利用</span>
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <p class="voice-text">敏感肌でいつも施術後に赤みが出ていましたが、ここでは一切なく驚きました。使っている製品へのこだわりと、カウンセリングの丁寧さが全然違いました。</p>
+      <div class="voice-author">
+        <strong>R.T. 様 / 30代</strong>
+        <span>Special コース 利用</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-line"></div>
+  <h2 class="reveal">
+    あなたの肌と、<br>
+    <em>向き合う時間を。</em>
+  </h2>
+  <p class="reveal">
+    初回限定トライアルコースをご用意しております。<br>
+    まずはお気軽にご相談ください。<br>
+    完全予約制のため、お早めのご予約をおすすめします。
+  </p>
+  <div class="cta-btns reveal">
+    <a href="tel:06-XXXX-XXXX" class="btn-gold">ご予約・お問い合わせ</a>
+    <a href="#" class="btn-border">LINEで相談する</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">LUMIÈRE</div>
+    <p>大阪市中央区心斎橋 ／ 完全予約制 ／ 営業時間 10:00〜20:00（火曜定休）</p>
+  </div>
+  <p>© 2026 LUMIÈRE. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
