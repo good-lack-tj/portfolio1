@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ほぐし処 てのひら｜大阪・天王寺のリラクゼーションサロン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6F0;
+    --warm-white: #FDF9F4;
+    --bark: #8B6F47;
+    --bark-light: #B8946A;
+    --bark-dark: #5C4530;
+    --sage: #7A8C6E;
+    --sage-light: #A8B89A;
+    --terra: #C4724A;
+    --text-dark: #2C2018;
+    --text-mid: #5A4A38;
+    --text-light: #8C7B68;
+    --shadow: rgba(92, 69, 48, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 246, 240, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(139, 111, 71, 0.15);
+  }
+
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--bark-dark);
+    letter-spacing: 0.08em;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 0.2em;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    margin-top: 2px;
+  }
+
+  nav { display: flex; gap: 32px; align-items: center; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--bark); }
+
+  .nav-cta {
+    background: var(--bark);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.1em;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--bark-dark) !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(122, 140, 110, 0.15);
+    color: var(--sage);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(122, 140, 110, 0.3);
+    width: fit-content;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--bark-dark);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease 0.15s forwards;
+    opacity: 0;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--terra);
+    position: relative;
+  }
+
+  .hero-title em::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--terra), transparent);
+    border-radius: 2px;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-bottom: 44px;
+    max-width: 360px;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--bark);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--bark-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(139, 111, 71, 0.4);
+  }
+
+  .btn-secondary {
+    border: 1.5px solid var(--bark-light);
+    color: var(--bark);
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(139, 111, 71, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #E8D5BE 0%, #D4B896 40%, #C4A07A 100%);
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: 
+      radial-gradient(circle at 20% 20%, var(--bark-dark) 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, var(--bark-dark) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .hero-image-card {
+    position: absolute;
+    inset: 60px 40px;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: fadeIn 1s ease 0.3s forwards;
+    opacity: 0;
+  }
+
+  .hero-illust {
+    font-size: 8rem;
+    filter: drop-shadow(0 8px 24px rgba(92,69,48,0.2));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 80px;
+    left: -20px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--shadow);
+    animation: fadeUp 0.8s ease 0.6s forwards;
+    opacity: 0;
+  }
+
+  .hero-stats p {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    margin-bottom: 4px;
+  }
+
+  .hero-stats strong {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+    color: var(--bark-dark);
+  }
+
+  .hero-stats span {
+    font-size: 0.7rem;
+    color: var(--text-mid);
+  }
+
+  /* ===== WORRY SECTION ===== */
+  .worry {
+    padding: 100px 80px;
+    background: var(--warm-white);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--sage);
+  }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--bark-dark);
+    line-height: 1.5;
+    margin-bottom: 60px;
+  }
+
+  .worry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .worry-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 36px 28px;
+    border: 1px solid rgba(139, 111, 71, 0.12);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .worry-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bark-light), var(--sage-light));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .worry-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px var(--shadow); }
+  .worry-card:hover::before { opacity: 1; }
+
+  .worry-icon { font-size: 2.2rem; margin-bottom: 16px; }
+
+  .worry-card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    color: var(--bark-dark);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .worry-card p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    padding: 100px 80px;
+    background: var(--cream);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 24px;
+    padding: 36px;
+    background: var(--warm-white);
+    border-radius: 20px;
+    border: 1px solid rgba(139, 111, 71, 0.1);
+    transition: all 0.3s;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px var(--shadow);
+  }
+
+  .feature-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(139, 111, 71, 0.2);
+    line-height: 1;
+    min-width: 48px;
+  }
+
+  .feature-content h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    color: var(--bark-dark);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .feature-content p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  .feature-tag {
+    display: inline-block;
+    background: rgba(122, 140, 110, 0.15);
+    color: var(--sage);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(122, 140, 110, 0.25);
+  }
+
+  /* ===== MENU ===== */
+  .menu {
+    padding: 100px 80px;
+    background: var(--bark-dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(196, 114, 74, 0.15) 0%, transparent 70%);
+  }
+
+  .menu .section-label { color: var(--bark-light); }
+  .menu .section-label::before { background: var(--bark-light); }
+  .menu .section-title { color: white; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .menu-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-card.popular {
+    border-color: var(--bark-light);
+    background: rgba(184, 148, 106, 0.15);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--terra);
+    color: white;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  .menu-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .menu-time {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--bark-light);
+    margin-bottom: 12px;
+  }
+
+  .menu-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .menu-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+
+  .menu-price {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.6rem;
+    color: white;
+    font-weight: 600;
+  }
+
+  .menu-price span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  /* ===== VOICE ===== */
+  .voice {
+    padding: 100px 80px;
+    background: var(--warm-white);
+  }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .voice-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 32px 28px;
+    border: 1px solid rgba(139, 111, 71, 0.12);
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .voice-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px var(--shadow);
+  }
+
+  .voice-quote {
+    font-size: 3rem;
+    color: rgba(139, 111, 71, 0.2);
+    font-family: 'Noto Serif JP', serif;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .voice-text {
+    font-size: 0.85rem;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+  }
+
+  .voice-stars {
+    color: #D4A843;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .voice-author {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  .voice-author strong {
+    display: block;
+    color: var(--text-dark);
+    font-size: 0.88rem;
+    margin-bottom: 2px;
+  }
+
+  /* ===== ACCESS ===== */
+  .access {
+    padding: 100px 80px;
+    background: var(--cream);
+  }
+
+  .access-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .access-info h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    color: var(--bark-dark);
+    margin-bottom: 28px;
+  }
+
+  .access-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .access-list li {
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(139, 111, 71, 0.1);
+  }
+
+  .access-list li:last-child { border-bottom: none; }
+
+  .access-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--bark);
+    background: rgba(139, 111, 71, 0.1);
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    height: fit-content;
+    margin-top: 2px;
+  }
+
+  .access-map {
+    background: linear-gradient(135deg, #E8D5BE, #D4B896);
+    border-radius: 24px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(139, 111, 71, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-placeholder {
+    text-align: center;
+    color: var(--bark-dark);
+  }
+
+  .map-placeholder p {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    margin-top: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    padding: 100px 80px;
+    background: linear-gradient(135deg, var(--bark) 0%, var(--bark-dark) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -150px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  }
+
+  .cta-section h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .cta-section p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 44px;
+    line-height: 1.9;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--bark-dark);
+    padding: 18px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+
+  .btn-outline-white {
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 18px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+
+  .btn-outline-white:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    header { padding: 14px 24px; }
+    nav { gap: 16px; }
+    nav a:not(.nav-cta) { display: none; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 32px 60px; }
+    .hero-right { height: 300px; }
+    .hero-stats { left: 16px; bottom: 20px; }
+
+    .worry, .features, .menu, .voice, .access, .cta-section { padding: 70px 32px; }
+
+    .worry-grid, .menu-grid, .voice-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .access-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    ほぐし処 てのひら
+    <span>TENOHIRA MASSAGE SALON</span>
+  </div>
+  <nav>
+    <a href="#features">特徴</a>
+    <a href="#menu">メニュー</a>
+    <a href="#voice">お客様の声</a>
+    <a href="#access">アクセス</a>
+    <a href="#cta" class="nav-cta">予約する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">大阪・天王寺 ／ 完全予約制</div>
+    <h1 class="hero-title">
+      毎日の<em>疲れ</em>を、<br>
+      やさしくほぐす<br>
+      場所があります。
+    </h1>
+    <p class="hero-sub">
+      肩こり・腰痛・ストレスでお悩みの方へ。<br>
+      経験豊富なスタッフが、あなたの体の状態に合わせて丁寧にほぐします。<br>
+      「また来たい」と思えるサロンを目指しています。
+    </p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">無料相談・ご予約</a>
+      <a href="#menu" class="btn-secondary">メニューを見る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-image-card">
+      <div class="hero-illust">🌿</div>
+    </div>
+    <div class="hero-stats">
+      <p>累計ご利用者数</p>
+      <strong>2,000</strong><span>名以上</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORRY -->
+<section class="worry">
+  <div class="section-label">WORRY</div>
+  <h2 class="section-title reveal">こんなお悩み、<br>ありませんか？</h2>
+  <div class="worry-grid">
+    <div class="worry-card reveal">
+      <div class="worry-icon">😔</div>
+      <h3>肩こり・腰痛が<br>ずっと続いている</h3>
+      <p>デスクワークや育児で体が限界。毎日つらいのに、なかなか改善しない…という方も多くいらっしゃいます。</p>
+    </div>
+    <div class="worry-card reveal">
+      <div class="worry-icon">😰</div>
+      <h3>マッサージ店に<br>行くのが不安</h3>
+      <p>はじめてのお店は緊張しますよね。「ちゃんとほぐしてもらえるか」「雰囲気が合うか」心配な方もご安心ください。</p>
+    </div>
+    <div class="worry-card reveal">
+      <div class="worry-icon">😩</div>
+      <h3>なかなか時間が<br>取れない</h3>
+      <p>仕事や家事で忙しく、自分のケアは後回しになりがち。完全予約制なので、待ち時間なくスムーズにご利用いただけます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-label">FEATURES</div>
+  <h2 class="section-title reveal">てのひらが<br>選ばれる理由</h2>
+  <div class="features-grid">
+    <div class="feature-item reveal">
+      <div class="feature-num">01</div>
+      <div class="feature-content">
+        <div class="feature-tag">丁寧なカウンセリング</div>
+        <h3>毎回、体の状態を<br>しっかり確認します</h3>
+        <p>施術前に体の状態・お悩みを丁寧にヒアリング。その日のコンディションに合わせて施術内容を調整するので、毎回最適なケアを受けていただけます。</p>
+      </div>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">02</div>
+      <div class="feature-content">
+        <div class="feature-tag">女性スタッフ在籍</div>
+        <h3>女性の方も<br>安心してご来店いただけます</h3>
+        <p>女性スタッフが常駐しておりますので、女性のお客様もリラックスしてご利用いただけます。ご希望の場合はご予約時にお申し付けください。</p>
+      </div>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">03</div>
+      <div class="feature-content">
+        <div class="feature-tag">完全予約制</div>
+        <h3>待ち時間ゼロ。<br>スムーズにご案内</h3>
+        <p>完全予約制なので、到着後すぐにご案内できます。お忙しい方や時間を大切にしたい方に特に好評いただいています。</p>
+      </div>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">04</div>
+      <div class="feature-content">
+        <div class="feature-tag">アットホームな雰囲気</div>
+        <h3>気軽に通える<br>地元のサロン</h3>
+        <p>堅苦しくなく、気軽に「また来たい」と思っていただけるような雰囲気づくりを大切にしています。初めての方もお気軽にどうぞ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="section-label">MENU</div>
+  <h2 class="section-title reveal">メニュー・料金</h2>
+  <div class="menu-grid">
+    <div class="menu-card reveal">
+      <div class="menu-time">60分</div>
+      <div class="menu-name">全身リラクゼーション</div>
+      <div class="menu-desc">首・肩・背中・腰・脚まで全身をくまなくほぐします。はじめての方にもおすすめの定番コースです。</div>
+      <div class="menu-price">¥5,500<span>（税込）</span></div>
+    </div>
+    <div class="menu-card popular reveal">
+      <div class="popular-badge">人気No.1</div>
+      <div class="menu-time">90分</div>
+      <div class="menu-name">肩こり・腰痛 集中ケア</div>
+      <div class="menu-desc">つらい肩こり・腰痛に特化した集中ケアコース。気になる部位をしっかり時間をかけてほぐします。</div>
+      <div class="menu-price">¥8,000<span>（税込）</span></div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-time">30分</div>
+      <div class="menu-name">お試し・スポットケア</div>
+      <div class="menu-desc">「とにかく肩だけほぐしたい」「はじめてなので試したい」という方のための短時間コースです。</div>
+      <div class="menu-price">¥3,000<span>（税込）</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice" id="voice">
+  <div class="section-label">VOICE</div>
+  <h2 class="section-title reveal">お客様の声</h2>
+  <div class="voice-grid">
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-text">毎月通っています。施術前のカウンセリングがしっかりしていて、その日の状態に合わせてほぐしてもらえるのがとてもありがたいです。</p>
+      <div class="voice-author">
+        <strong>30代女性・会社員</strong>
+        天王寺在住
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-text">長年悩んでいた腰痛が、数回通ってかなり楽になりました。スタッフさんが親切で、リラックスして話せる雰囲気も気に入っています。</p>
+      <div class="voice-author">
+        <strong>40代男性・自営業</strong>
+        阿倍野区在住
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <div class="voice-quote">"</div>
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-text">完全予約制なので待たされることがなく、仕事帰りでもスムーズに利用できます。はじめて行く前はちょっと緊張しましたが、すごくアットホームでした。</p>
+      <div class="voice-author">
+        <strong>20代女性・看護師</strong>
+        住吉区在住
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access" id="access">
+  <div class="section-label">ACCESS</div>
+  <h2 class="section-title reveal">アクセス・店舗情報</h2>
+  <div class="access-inner">
+    <div class="access-info reveal">
+      <h3>ほぐし処 てのひら</h3>
+      <ul class="access-list">
+        <li>
+          <span class="access-label">住所</span>
+          大阪府大阪市天王寺区○○町1-2-3<br>○○ビル 2F
+        </li>
+        <li>
+          <span class="access-label">最寄駅</span>
+          JR・地下鉄「天王寺駅」より徒歩5分
+        </li>
+        <li>
+          <span class="access-label">営業時間</span>
+          平日 10:00 〜 21:00<br>
+          土日祝 10:00 〜 19:00
+        </li>
+        <li>
+          <span class="access-label">定休日</span>
+          毎週水曜日
+        </li>
+        <li>
+          <span class="access-label">電話</span>
+          06-XXXX-XXXX
+        </li>
+      </ul>
+    </div>
+    <div class="access-map reveal">
+      <div class="map-placeholder">
+        <div style="font-size:3rem;">📍</div>
+        <p>大阪市天王寺区<br>（Googleマップ埋め込み予定）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <h2 class="reveal">まずはお気軽に<br>ご相談ください</h2>
+  <p class="reveal">ご予約・お問い合わせはお電話またはLINEにて受け付けております。<br>「はじめてで不安」という方も、どうぞお気軽にご連絡ください。</p>
+  <div class="cta-btns reveal">
+    <a href="tel:06-XXXX-XXXX" class="btn-white">📞 電話で予約する</a>
+    <a href="#" class="btn-outline-white">💬 LINEで相談する</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">ほぐし処 てのひら</div>
+    <div>大阪府大阪市天王寺区 ／ 営業時間 10:00〜21:00（水曜定休）</div>
+  </div>
+  <div>© 2026 ほぐし処 てのひら. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
